@@ -11,6 +11,7 @@ import kotlin.test.Test
 
 @SpringBootTest
 @TestPropertySource(
+    locations = ["classpath:application-test.properties"],
     properties = [
         "email.max-per-day=1",
     ]
