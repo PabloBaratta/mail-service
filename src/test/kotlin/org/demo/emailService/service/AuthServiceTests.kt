@@ -23,7 +23,7 @@ class AuthServiceTests
             val password = "password123"
             val user = authService.register(email, password, RoleType.USER)
             assertNotNull(user.id)
-            assertEquals("email", user.email)
+            assertEquals(email, user.email)
         }
 
         @Test
