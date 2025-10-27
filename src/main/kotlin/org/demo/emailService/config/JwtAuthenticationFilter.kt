@@ -19,7 +19,7 @@ class JwtAuthenticationFilter(
     ) {
         val authHeader = request.getHeader("Authorization")
         val token = authHeader?.takeIf { it.startsWith("Bearer ") }?.substring(7)
-        if (token != null) {
+        if (token != null  && SecurityContextHolder.getContext().authentication == null) {
             val userDetails = tokenService.validateToken(token)
             if (userDetails != null) {
                 val authentication =

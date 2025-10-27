@@ -38,6 +38,9 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 	runtimeOnly("com.h2database:h2")
+
+	implementation("org.springframework.boot:spring-boot-starter-mail")
+	implementation("com.sparkpost:sparkpost-lib:0.27")
 }
 
 kotlin {

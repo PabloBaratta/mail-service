@@ -29,8 +29,8 @@ class TokenService(
             .compact()
     }
 
-    fun validateToken(token: String): SpringUser? =
-        try {
+    fun validateToken(token: String): SpringUser? {
+        return try {
             val key = Keys.hmacShaKeyFor(jwtConfig.secret.toByteArray(StandardCharsets.UTF_8))
             val claims: Claims =
                 Jwts
@@ -42,8 +42,10 @@ class TokenService(
             val email = claims.subject
             val role = claims["role"] as? String ?: "USER"
             val authorities = listOf(SimpleGrantedAuthority("ROLE_$role"))
-            SpringUser(email, "", authorities)
+            return SpringUser(email, "", authorities)
         } catch (ex: Exception) {
+            println(ex)
             null
         }
+    }
 }
